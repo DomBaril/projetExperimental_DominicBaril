@@ -2,15 +2,48 @@
 
 \usepackage[utf8]{inputenc}
 \usepackage[printonlyused]{acronym}
-\usepackage{hyperref}
+\usepackage{biblatex}
+\usepackage[margin2.0cm]{geometry}
 
-\title{\vspace{-2cm} Projet expérimental - IFT-7026}
+\title{\vspace{-2.0cm} Projet expérimental - IFT-7026}
 \author{\textbf{Dominic Baril} \\ \small Supervisé par François Pomerleau}
+\date{\vspace{-5ex}}
+
+\addbibresource{references.bib}
+
+\acrodef{CTU Prague}{Université technique de Prague}
+\acrodef{ICP}{Iterative Closest Point}
+\acrodef{UGV}{Véhicule terrestre sans pilote}
 
 \begin{document}
     \maketitle
     
-    
-    
+     En Février 2020, une équipe du laboratoire Norlab de l'Université Laval collaborera avec une équipe de l'\ac{CTU Prague} pour participer au \textit{DARPA Subterranean Challenge}\footnote{\url{https://www.darpa.mil/program/darpa-subterranean-challenge}}, une compétition internationnale de robotique mobile. 
+     Les membres de l'équipe du Norlab seront responsables de l'implémentation d'un algorithme de perception tri-dimensionnel fonctionnant avec des nuages de points produits par des capteurs lidars.
+     
+     \bigskip
+     
+     La perception est un champ majeur de la robotique mobile car il permet aux robots de se localiser dans l'environnement.
+     Pour ce faire, il est possible d'aligner des nuages de points pris à plusieurs endroits sur une trajectoire. 
+     L'algorithme le plus populaire dans la littérature pour effectuer cette tâche est \ac{ICP} \cite{Chen1991}. 
+     Cet algorithme peut être intégré à un robot mobile afin de lui permettre de naviguer dans un environnement inconnu et de le cartographier de manière précise en temps réel \cite{Pomerleau2013, Pomerleau2015}. %(source path planning?)
+     
+     \bigskip
+     
+     La projet vise donc à intégrer un \ac{UGV} pour l'ajouter à la flotte de véhicules de \ac{CTU Prague}. 
+     Cette plateforme sera un \textit{Husky}\footnote{\url{https://clearpathrobotics.com/husky-unmanned-ground-vehicle-robot/}} de la compagnie Clearpath Robotics, auquel un capteur lidar \textit{VLP-16}\footnote{\url{https://velodynelidar.com/products/puck/}} de Velodyne sera ajouté pour produire des nuages de points. 
+     La librairie \textit{libpointmatcher}\footnote{\url{https://github.com/ethz-asl/libpointmatcher}} sera utilisée afin de produire la localisation du robot et les cartes de l'environnement en temps réel. 
+     Ces cartes serviront à identifier la localisation d'objectifs situés dans le parcours de la compétition. 
+     L'exactitude de cette identification permettra d'obtenir des points pour le compétition.
+     
+     \bigskip
+     
+     Suite à la compétition, les résultats obtenus seront comparés à la vérité terrain fournie par les organisateurs afin d'identifier les erreurs. 
+     Des jeux de données récoltés lors de la compétition seront utilisés afin de faire fonctionner l'algorithme \ac{ICP} dans les mêmes conditions une fois celle-ci terminée.
+     Une analyse des sources d'erreur sera réalisée et une proposition des paramètres à modifier sera réalisée. 
+     Un rapport technique sera produit pour le partenaire du projet, General Dynamics, en tant que livrable final.
+     
+     \newpage
+     \printbibliography[title=Références]
     
 \end{document}
