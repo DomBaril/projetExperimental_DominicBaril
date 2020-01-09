@@ -12,36 +12,36 @@
 \addbibresource{references.bib}
 
 \acrodef{CTU Prague}{Université technique de Prague}
-\acrodef{ICP}{Iterative Closest Point}
-\acrodef{UGV}{Véhicule terrestre sans pilote}
+\acrodef{ICP}{\textit{Iterative Closest Point}}
+\acrodef{UGV}{\textit{Unmanned Ground Vehicle}}
 
 \begin{document}
     \maketitle
-    
-     En Février 2020, une équipe du laboratoire Norlab de l'Université Laval collaborera avec une équipe de l'\ac{CTU Prague} pour participer au \textit{DARPA Subterranean Challenge}\footnote{\url{https://www.darpa.mil/program/darpa-subterranean-challenge}}, une compétition internationnale de robotique mobile. 
-     Les membres de l'équipe du Norlab seront responsables de l'implémentation d'un algorithme de perception tri-dimensionnelle fonctionnant avec des nuages de points produits par des capteurs lidars.
-     
-     \bigskip
-     
      La perception est un champ majeur de la robotique mobile car il permet aux robots de se localiser dans l'environnement.
      Pour ce faire, il est possible d'aligner des nuages de points pris à plusieurs endroits sur une trajectoire. 
      L'algorithme le plus populaire dans la littérature pour effectuer cette tâche est \ac{ICP} \cite{Chen1991}. 
-     Cet algorithme peut être intégré à un robot mobile afin de lui permettre de naviguer dans un environnement inconnu et de le cartographier de manière précise en temps réel \cite{Pomerleau2013, Pomerleau2015}. %(source path planning?)
+     Cet algorithme peut être intégré à un robot mobile afin de lui permettre de naviguer dans un environnement inconnu et de le cartographier de manière précise en temps réel \cite{Pomerleau2013, Pomerleau2015}. 
      
      \bigskip
      
-     La projet vise donc à intégrer un \ac{UGV} pour l'ajouter à la flotte hétérogène de véhicules autonomes de \ac{CTU Prague}. 
-     Cette plateforme sera un \textit{Husky}\footnote{\url{https://clearpathrobotics.com/husky-unmanned-ground-vehicle-robot/}} de la compagnie Clearpath Robotics, auquel un capteur lidar \textit{VLP-16}\footnote{\url{https://velodynelidar.com/products/puck/}} de Velodyne sera ajouté pour produire des nuages de points. 
-     La librairie \textit{libpointmatcher}\footnote{\url{https://github.com/ethz-asl/libpointmatcher}} sera utilisée afin de produire la localisation du robot et les cartes de l'environnement en temps réel. 
-     Ces cartes serviront à identifier la localisation d'objectifs situés dans le parcours de la compétition. 
-     L'exactitude de cette identification détermine le pointage de la compétition.
+     Le projet vise à évaluer la capacité d'un \ac{UGV} de cartographier un environnement intérieur.
+     Cette plateforme sera un \textit{Husky}\footnote{\url{https://clearpathrobotics.com/husky-unmanned-ground-vehicle-robot/}} de la compagnie Clearpath Robotics, auquel un capteur lidar \textit{RS-LiDAR-16}\footnote{\url{https://www.robosense.ai/rslidar/rs-lidar-16}} de Robosense sera ajouté pour produire des nuages de points. 
+     La librairie \textit{libpointmatcher}\footnote{\url{https://github.com/ethz-asl/libpointmatcher}} sera utilisée afin de produire la localisation du robot et les cartes de l'environnement grâce à l'algorithme \ac{ICP}. 
+     
      
      \bigskip
      
-     Suite à la compétition, les résultats obtenus seront comparés à la vérité terrain fournie par les organisateurs afin d'identifier les erreurs. 
-     Des jeux de données récoltés lors de la compétition seront utilisés afin de faire fonctionner l'algorithme \ac{ICP} dans les mêmes conditions une fois celle-ci terminée.
-     Une analyse des sources d'erreur sera réalisée et une proposition des paramètres à modifier sera réalisée. 
-     Un rapport technique sera produit pour le partenaire du projet, General Dynamics, en tant que livrable final.
+     Afin d'évaluer la capacité de la plateforme pour effectuer cette tâche, deux environnements d'essais seront utilisés. 
+     Le premier est le rez-de-chaussé du pavillon Adrien Pouliot de l'Université Laval. 
+     Le deuxième est une usine désaffectée qui sert de parcours pour la compétition \textit{DARPA Subterranean Challenge}\footnote{\url{https://www.darpa.mil/program/darpa-subterranean-challenge}}, qui se tient en février 2020.
+     Un ensemble optimal de paramètres de l'algorithme devront être sélectionnés afin de lui permettre de produire une carte précise sur une trajectoire de plusieurs centaines de mètres.
+     
+     \bigskip
+     
+     L'algorithme ICP sera utilisé hors ligne sur les jeux de données préalablement récoltés dans ces deux environnements. 
+     L'exactitude des cartes formées grâce aux données récoltées à l'Université sera évaluée via la distance de fermeture de boucle.
+     L'exactitude des cartes formées via les données récoltées à la compétition sera plutôt évaluée en comparant les cartes à la vérité terrain qui sera fournie par les organisateurs.
+     Un rapport technique contenant une analyse des sources d'erreur et une proposition des paramètres à modifier sera réalisé.
      
      \newpage
      \printbibliography[title=Références]
